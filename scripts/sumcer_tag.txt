@@ -1,0 +1,10 @@
+01:ESPnet(CSJ core)	espnet/ouktlab/espnet_csjcore_asr_train_asr_transformer_lm_rnn/nbeam-20_ctcw-0.21_lmw-0.30_penalty-0.0
+02:ESPnet(CSJ full)	espnet/ouktlab/espnet_csj_asr_train_asr_transformer_lm_rnn/nbeam-20_ctcw-0.21_lmw-0.30_penalty-0.0
+03:ESPnet(Corpus10)	espnet/ouktlab/espnet_asr-ja-mc_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b/nbeam-20_ctcw-0.195_lmw-0.35_penalty-0.0
+04:SASR+SCT(Corpus10)	sasrct/ouktlab/espnet_asr-ja-kc_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b/nbeam-20_ctcw-0.195_lmw-0.35_penalty-0.0/ouktlab/t5_sct-jis-v2_corpus10-bccwj-wiki40b_mask-1.00/nbeam-15
+11:ESPnet-st(Corpus10)	espnet/ouktlab/espnet_asr-ja-mc-stream_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b/nbeam-20_ctcw-0.195_lmw-0.35_penalty-0.0
+20:ESPnet(Laborotv)	espnet/Shinji Watanabe/laborotv_asr_train_asr_conformer2_latest33_raw_char_sp_valid.acc.ave/nbeam-20_ctcw-0.21_lmw-0.30_penalty-0.0
+21:Whisper(large-v3)	whisper/large-v3
+22:Nue	nue
+23:Reazon	reazon
+24:RunASR	funasr

@@ -1,0 +1,68 @@
+#
+if [ $# -ne 5 ]; then
+    echo "usage: topdir resultfile resultpath refkeytext dictfileheader"
+    exit;
+fi
+
+#
+topdir=$1
+resultfile="${2}"
+resultpath="${3}"
+rawtext="${4}"
+dictfileheader=$5
+
+#
+parser=fugashi
+scriptdir=${topdir}/scripts/
+sclite="sctk sclite"
+
+###
+. ${topdir}/venv/${parser}/bin/activate
+
+####### raw score ######
+# ref
+reffile=${resultpath}/ref_rawtext.txt
+cat ${rawtext} \
+    | python3 ${scriptdir}/prenorm.py \
+    | python3 ${scriptdir}/trn2evalfmt.py > "${reffile}"
+# hyp
+hypfile=${resultpath}/hyp_rawtext.txt
+cat "${resultfile}" \
+    | python3 ${scriptdir}/prenorm.py \
+    | python3 ${scriptdir}/trn2evalfmt.py > "${hypfile}"
+# score
+scorefile="${resultpath}"/score_rawtext.txt
+${sclite} -r "${reffile}" trn -h "${hypfile}" trn \
+	  -i rm -o all stdout > "${scorefile}"
+
+####### word-normalization ######
+for level in none lax; do
+    # ref
+    refsetfile=${resultpath}/ref_npset-${parser}_lv-${level}.txt
+    reffile=${resultpath}/ref_np-${parser}_lv-${level}.txt
+    cat ${rawtext} \
+	| python3 ${scriptdir}/prenorm.py \
+	| python3 ${scriptdir}/normdict.py ${dictfileheader}_lv-${level}.txt \
+	| python3 ${scriptdir}/norm_${parser}.py set --setout "${refsetfile}" \
+	| python3 ${scriptdir}/trn2evalfmt.py \
+		  > "${reffile}"
+    
+    # hyp
+    hypfile=${resultpath}/hyp_np-${parser}_lv-${level}.txt
+    cat "${resultfile}" \
+	| python3 ${scriptdir}/prenorm.py \
+	| python3 ${scriptdir}/normdict.py ${dictfileheader}_lv-${level}.txt \
+	| python3 ${scriptdir}/norm_${parser}.py filter --setin "${refsetfile}" \
+	| python3 ${scriptdir}/trn2evalfmt.py > "${hypfile}"
+    
+    #
+    scorefile=${resultpath}/score_np-${parser}_lv-${level}.txt
+    ${sclite} -r "${reffile}" trn -h "${hypfile}" trn \
+	      -i rm -o all stdout \
+	| python3 ${scriptdir}/skip.py \
+		      > "${scorefile}"
+    
+done
+
+deactivate
+

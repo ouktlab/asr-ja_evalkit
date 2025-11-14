@@ -1,0 +1,74 @@
+# ref
+えー	(ええ)
+まー	(まあ)
+00.5124816ヘルツ	(ゼロ零\.五一二四八十六ヘルツ)
+0.5124816ナイキスト	(零\.五一二四八十六ナイキスト)
+6912	(六九十二)
+1011	(十十一)
+1213	(十二十三)
+1415	(十四十五)
+2425	(二十四二十五)
+1通り	(一通り)
+1枚	(一枚)
+1連	(一連)
+1回	(一回)
+
+# nue
+ミリセカンド	(mmセカンド)
+
+# whisper
+マイクロホン	(マイクロフォン)
+エイチディーヴィジョン	(HDVision)
+ミリセカンド	(ms)
+\1メートル	([0-9])m
+\1メートル	([0-9])M
+掛ける	(×)
+パーセント	(%)
+デシベル	(dB)
+レクティカライズド	(Lecticalized|lecticalized)
+ツリー	(Tree|tree)
+アドジョイニング	(Adjoining|adjoining)
+グラマー	(Grammar|grammar)
+LTAG	(Lタグ|lタグ)
+オーグジアリーツー	(Auxiliary2|auxiliary2)
+サブスティチューション	(Substitution|substitution)
+アイスィンク	(I think|i think)
+ソーロオブ	(Sort of|sort of)
+パーパップス	(Perhaps|perhaps)
+幾つか	(いくつか)
+1のAB	(1\-AB|1\-ab)
+ヒーヒッタドッグ	(He hit the dog\.|he hit the dog\.|He hit the dog|he hit the dog)
+ザドッグヒットヒム	(the dog hit him|The dog hit him)
+アイゴートゥースクール	(I go to school)
+ヒーゴーストゥースクール   (He goes to school)
+21のB	(21\-B|21\-b)
+何か	(なんか)
+ヒー	(he)
+ドッグ	(dog)
+アイ	(I )
+0	(ゼロ)
+
+# nue
+センチ	(cm)
+ハッチ	(Hatch)
+アイが	(Iが)
+ヒーロー	(Hero)
+
+# reazon
+\1グラム	([0-9])g
+LTAG	エルタグ
+アイステンク	istenk
+Anova	アノバ
+アイゴトゥー	Igoto
+ヒーゴーストゥー	Hegosto
+
+# espnet
+0 零
+
+# sasr
+5124816	(五 一二四八十六)
+5124816	(五 一 二 四八十六)
+1011	(十 十一)
+1213	(十二 十三)
+5124816	(五 一 二四八十六)
+89	(八九)

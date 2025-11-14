@@ -1,0 +1,64 @@
+# reference
+えー	(ええ)
+まー	(まあ)
+0度	(ゼロ度)
+071	(ゼロ七十一)
+07	(ゼロ七)
+0	(ゼロ)
+50はつ8	(五十はつ八)
+7く閾値	(七く閾値)
+
+# whisper
+ミリセカンド	(ms)
+デシベル	(dB)
+LTAG	(Lタグ|lタグ)
+# imaginary word
+レクティカライズド	(Lecticalized)
+ツリー	(Tree|tree)
+オートマトン	(Automaton|automaton)
+パーセント	(%)
+ニュー	(new|New)
+オーバー	(over|Over)
+オール	(all|All)
+コンテキストフリー	(Context-free|context-free)
+グラマー	(grammar|Grammar)
+ランゲージ	(language|Language)
+トリビアル	(Trivial|trivial)
+ルート	(√)
+5分の8	(5⁄8)
+6000	(6千)
+9000	(9千)
+係り受け	(かかり受け)
+Prologue	(プロローグ)
+Gスリー	(G3)
+3掛ける3	(3×3)
+ばね	(バネ)
+フレック	(FLEC)
+ワンパス	(1パス)
+4万5762	(45762)
+ブレックファスト	(breakfast)
+n掛ける	(n×)
+マイナス1マイナス1	(-1-1)
+マイナス1	(-1)
+フェーズスリー	(フェーズ3)
+PoC	(ポック)
+スリーフェーズ	(3フェーズ)
+何か	(なんか)
+
+# nue
+ミリ	(mm)
+LTAG	(エルタグ)
+トゥデイ	(Today)
+トトマト	(TOTOMAT)
+トト	(TOTO)
+Gスリー	(GIII)
+
+# reazon
+LTAB	(エルタブ)
+幾つか	(いくつか)
+
+# espnet
+
+# sasr
+miletag	(マイルタグ)
+富士通アイ	(富士通I)

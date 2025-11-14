@@ -1,0 +1,32 @@
+[project]
+name = "asr-ja_evalkit"
+readme = "README.md"
+license-files = ["LICENSE"]
+version = "0.1"
+classifiers = [
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",     
+]
+requires-python = ">=3.10"
+dependencies = [
+  "pyyaml",
+  "fugashi[unidic]",
+]
+
+[project.scripts]
+pyscliteja = "pysctkja:app_pyscliteja"
+
+[tool.setuptools.packages.find]
+include = ["pysctkja"]
+
+#[project.optional-dependencies]
+#asr = [
+#  "torch",
+#  "torchaudio",
+#  "torchcodec",
+#  "numpy",
+#  "soxr",
+#  "espnet", 
+#  "espnet_model_zoo",
+#]

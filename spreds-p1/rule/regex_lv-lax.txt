@@ -1,0 +1,18 @@
+# ref
+DDoS攻撃	(リードス攻撃)
+2者間	(二者間)
+
+# whisper
+パーセント	(%)
+米ドル	(ベイドル)
+ボット	(Bot|bot)
+
+# nue
+見い出す	(見いだす)
+
+# reazon
+
+# espnet
+Wi-Fi	(ワイファイ)
+
+# sasr
