@@ -392,7 +392,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 21:Whisper(large-v3)    |     17.34 |      6.87 |     17.43 |     19.96 |      4.96 |      4.79 |
 | 22:Nue                  |     29.05 |      8.76 |     25.50 |     31.66 |      7.95 |      5.43 |
 | 23:Reazon               |     18.47 |      6.85 |     15.87 |     20.07 |      3.25 |      4.77 |
-| 24:RunASR               |     13.71 |      7.89 |     13.58 |     20.36 |      3.52 |      5.43 |
+| 24:FunASR               |     13.71 |      7.89 |     13.58 |     20.36 |      3.52 |      5.43 |
 
 
 |                         |       csj |      jsut | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
@@ -416,7 +416,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 21:Whisper(large-v3)    |     13.31 |      3.63 |     15.99 |     18.17 |      3.49 |      2.00 |
 | 22:Nue                  |     25.50 |      4.43 |     24.03 |     29.72 |      6.17 |      2.38 |
 | 23:Reazon               |     14.21 |      3.09 |     13.99 |     17.38 |      1.30 |      1.52 |
-| 24:RunASR               |     10.95 |      5.07 |     11.93 |     18.65 |      2.20 |      2.86 |
+| 24:FunASR               |     10.95 |      5.07 |     11.93 |     18.65 |      2.20 |      2.86 |
 
 
 |                         |       csj |      jsut | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
@@ -440,7 +440,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 21:Whisper(large-v3)    |     12.75 |      3.52 |     14.74 |     18.02 |      3.18 |      1.43 |
 | 22:Nue                  |     25.10 |      4.34 |     23.66 |     29.55 |      5.94 |      1.84 |
 | 23:Reazon               |     13.71 |      3.00 |     13.54 |     17.25 |      1.04 |      1.06 |
-| 24:RunASR               |     10.30 |      4.99 |     11.49 |     18.56 |      1.96 |      2.48 |
+| 24:FunASR               |     10.30 |      4.99 |     11.49 |     18.56 |      1.96 |      2.48 |
 
 
 |                         |       csj |      jsut | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
