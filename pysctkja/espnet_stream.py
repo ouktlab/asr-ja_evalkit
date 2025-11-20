@@ -1,7 +1,5 @@
 import torch
 import torchaudio
-from typing import Any, List, Optional, Sequence, Tuple, Union
-from espnet2.bin.asr_inference_streaming import Speech2TextStreaming
 
 def usage():
     """
@@ -24,28 +22,6 @@ def usage():
 
     args = parser.parse_args()
     return args
-
-class Speech2TextStreamingInterface(Speech2TextStreaming):
-    def __init__(self, **kwargs):
-        super.__init__(kwargs)
-        
-    @staticmethod
-    def from_pretrained(
-            model_tag: Optional[str] = None,
-            **kwargs: Optional[Any],
-    ):
-        if model_tag is not None:
-            try:
-                from espnet_model_zoo.downloader import ModelDownloader
-            except ImportError:
-                print(
-                    "`espnet_model_zoo` is not installed. "
-                    "Please install via `pip install -U espnet_model_zoo`."
-                )
-                raise
-            d = ModelDownloader()
-            kwargs.update(**d.download_and_unpack(model_tag))
-        return Speech2TextStreaming(**kwargs)
 
 #####
 #
@@ -71,6 +47,31 @@ def proclist(model, filelist, outfile, basedir):
 
 
 def load_offline_model(args):
+    from typing import Any, List, Optional, Sequence, Tuple, Union
+    from espnet2.bin.asr_inference_streaming import Speech2TextStreaming
+
+    class Speech2TextStreamingInterface(Speech2TextStreaming):
+        def __init__(self, **kwargs):
+            super.__init__(kwargs)
+        
+        @staticmethod
+        def from_pretrained(
+            model_tag: Optional[str] = None,
+            **kwargs: Optional[Any],
+        ):
+            if model_tag is not None:
+                try:
+                    from espnet_model_zoo.downloader import ModelDownloader
+                except ImportError:
+                    print(
+                        "`espnet_model_zoo` is not installed. "
+                        "Please install via `pip install -U espnet_model_zoo`."
+                    )
+                    raise
+                d = ModelDownloader()
+                kwargs.update(**d.download_and_unpack(model_tag))
+            return Speech2TextStreaming(**kwargs)
+
     # Load model
     model = Speech2TextStreamingInterface.from_pretrained(
         args.model,
@@ -88,7 +89,7 @@ def load_offline_model(args):
     )
     return model
 
-def main():
+def espnet_stream_main():
     args = usage()
     print(f'[LOG]:', args)
     model = load_offline_model(args)
@@ -97,4 +98,4 @@ def main():
     
 
 if __name__ == '__main__':
-    main()
+    espnet_stream_main()

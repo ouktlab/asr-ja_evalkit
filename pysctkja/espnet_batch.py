@@ -1,5 +1,4 @@
 import torchaudio
-from espnet2.bin.asr_inference import Speech2Text
 
 def usage():
     """
@@ -43,6 +42,8 @@ def proclist(model, filelist, outfile, basedir):
 
 
 def load_offline_model(args):
+    from espnet2.bin.asr_inference import Speech2Text
+
     # Load model
     model = Speech2Text.from_pretrained(
         args.model,
@@ -59,7 +60,7 @@ def load_offline_model(args):
     )
     return model
 
-def main():
+def espnet_main():
     args = usage()
     print(f'[LOG]:', args)
     model = load_offline_model(args)
@@ -68,4 +69,4 @@ def main():
     
 
 if __name__ == '__main__':
-    main()
+    espnet_main()
