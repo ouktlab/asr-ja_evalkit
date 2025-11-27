@@ -338,7 +338,7 @@ Data set used for evaluation examples are:
 - [SPREDS-P1](https://ast-astrec.nict.go.jp/release/SPREDS-P1/) (NICT ASTREC. License - CC BY 4.0)
    - segmented data are used
 - [SPREDS-U1](https://ast-astrec.nict.go.jp/release/SPREDS-U1/) (NICT ASTREC. License - CC BY 4.0)
-- [JSUT](https://sites.google.com/site/shinnosuketakamichi/publication/jsut) (S. Takamichi. License - CC-BY-SA 4.0)
+- [JSUT](https://sites.google.com/site/shinnosuketakamichi/publication/jsut) (S. Takamichi. License of tags - CC-BY-SA 4.0, audio data is only for research by academic institutions, non-commercial research, and personal use) (modified)
 - CSJ (please purchase this corpus)
    - many fillers are included
    - assume eval1, eval2 and eval3 sets built by ESPnet CSJ recipe
