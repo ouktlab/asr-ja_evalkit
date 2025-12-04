@@ -20,13 +20,13 @@ pyscliteja = "pysctkja:app_pyscliteja"
 [tool.setuptools.packages.find]
 include = ["pysctkja"]
 
-#[project.optional-dependencies]
-#asr = [
-#  "torch",
-#  "torchaudio",
-#  "torchcodec",
-#  "numpy",
-#  "soxr",
-#  "espnet", 
-#  "espnet_model_zoo",
-#]
+[project.optional-dependencies]
+asr = [
+  "torch",
+  "torchaudio",
+  "torchcodec",
+  "numpy",
+  "soxr",
+  "espnet", 
+  "espnet_model_zoo",
+]
