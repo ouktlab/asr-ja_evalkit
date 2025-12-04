@@ -29,4 +29,5 @@ asr = [
   "soxr",
   "espnet", 
   "espnet_model_zoo",
+  "transformers"
 ]

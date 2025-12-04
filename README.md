@@ -289,6 +289,12 @@ RuntimeError:
 Failed initializing MeCab.
 ```
 
+If you want to use python scripts of ESPnet ASR for filelist in the `pysctkja` package, please type the following command to solve optional dependency. 
+```
+python3 -m pip install asr-ja_evalkit[asr]@git+https://git@github.com/ouktlab/asr-ja_evalkit.git
+```
+Python libraries, such as `torch`, `torchaudio`, and `espnet`, will be installed.  
+
 #### 3. Import "pysctkja" package (not "asr-ja_evalkit")
 
 ```
