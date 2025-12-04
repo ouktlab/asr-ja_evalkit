@@ -29,10 +29,11 @@ if [ $# -le 10 ]; then
 
     listfile=list/${corpus}_key-path.txt
     resultfile=${resultpath}/result_key-text.txt
+    sasrfile=${resultpath}/sasr_result_key-text.txt
     
     # recognition
     if [ ! -s ${resultfile} ]; then
-	. ${topdir}/venv/espnet/bin/activate
+	. ${topdir}/venv/espnet/bin/activate	
 	python3 ${topdir}/pysctkja/sasrct_batch.py ${sasr_model} ${tokenizer} ${sct_model} ${listfile} ${resultfile} ${sasrfile} \
                     --sasr_beam_size ${sasr_nbeam} --ctc_weight ${ctcw} --lm_weight ${lmw} --penalty ${penalty} \
                     --sct_beam_size ${sct_nbeam} --device ${device}
@@ -51,7 +52,8 @@ else
         
         listfile=list/${corpus}_${listname}_key-path.txt
         resultfile=${resultpath}/result_key-text.txt
-        
+        sasrfile=${resultpath}/sasr_result_key-text.txt
+	
         ###### recognition
         if [ ! -s ${resultfile} ]; then
             . ${topdir}/venv/espnet/bin/activate
