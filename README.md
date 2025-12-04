@@ -362,7 +362,7 @@ Sample ASR models are:
    - ESPnet-st(Corpus10) (0.25 sec. segment in inference)
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - ESPnet models (character-based ASR) 
-   - ESPnet(Laborotv)
+   - ESPnet([Laborotv](https://huggingface.co/espnet/Shinji_Watanabe_laborotv_asr_train_asr_conformer2_latest33_raw_char_sp_valid.acc.ave))
 - Syllable-ASR & syllable-to-character translation in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - SASR+SCT(Corpus10) with 1-best search = cascaded process
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
