@@ -364,9 +364,9 @@ Some data sets are automatically downloaded by shell scripts.
 
 Sample ASR models are:
 - ESPnet models (character-based ASR): trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
-   - ESPnet(CSJ core) -- (core set: 220 hrs)
-   - ESPnet(CSJ full) -- (full except D*: 660 hrs)
-   - ESPnet(Corpus10)
+   - ESPnet(CSJ core) -- (core set: 220 hrs. paired data)
+   - ESPnet(CSJ full) -- (full except D*: 660 hrs. paired data)
+   - ESPnet(Corpus10) -- (900 hrs. paired data)
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - ESPnet models (character-based ASR) for streaming: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - ESPnet-st(Corpus10) (0.25 sec. segment in inference)
@@ -374,7 +374,7 @@ Sample ASR models are:
 - ESPnet models (character-based ASR) 
    - ESPnet([Laborotv](https://huggingface.co/espnet/Shinji_Watanabe_laborotv_asr_train_asr_conformer2_latest33_raw_char_sp_valid.acc.ave))
 - Syllable-ASR & syllable-to-character translation: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
-   - SASR+SCT(Corpus10) with 1-best search = cascaded process
+   - SASR+SCT(Corpus10) -- (900 hrs. paired data): 1-best search = cascaded process
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - Reazon speech
 - FunASR (SenseVoiceSmall)
