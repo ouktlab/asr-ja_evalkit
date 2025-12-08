@@ -335,37 +335,45 @@ Our sample scripts output three types of CERs:
 
 Data set used for evaluation examples are:
 - [SPREDS-D1](https://ast-astrec.nict.go.jp/release/SPREDS-D1/) (NICT ASTREC. License - CC BY 4.0)
+   - dialogue speech (human-human)
    - many fillers are included
    - segmented data are used
 - [SPREDS-D2](https://ast-astrec.nict.go.jp/release/SPREDS-D2/) (NICT ASTREC. License - CC BY 4.0)
+   - dialogue speech (human-human)
    - many fillers are included
    - segmented data are used
    - long audio files (over 30 sec.) are separated in advance
 - [SPREDS-P1](https://ast-astrec.nict.go.jp/release/SPREDS-P1/) (NICT ASTREC. License - CC BY 4.0)
+   - presentation speech
    - segmented data are used
 - [SPREDS-U1](https://ast-astrec.nict.go.jp/release/SPREDS-U1/) (NICT ASTREC. License - CC BY 4.0)
+   - isolated utterance
 - [JSUT](https://sites.google.com/site/shinnosuketakamichi/publication/jsut) (S. Takamichi. License of tags - CC-BY-SA 4.0, audio data is only for research by academic institutions, non-commercial research, and personal use) (modified)
 - [JVNV](https://sites.google.com/site/shinnosuketakamichi/research-topics/jvnv_corpus) (CC BY-SA 4.0)
+   - emotional speech
 - [CPJD](https://sites.google.com/site/shinnosuketakamichi/research-topics/cpjd_corpus) (CC BY-SA 4.0)
+   - dialect speech
    - different audio conditions (e.g. strong noise supression)
 - CSJ (please purchase this corpus)
+   - lecture speech
+   - many technical terms: acoustic signal processing and lanugage processing
    - many fillers are included
    - assume eval1, eval2 and eval3 sets built by ESPnet CSJ recipe
 
 Some data sets are automatically downloaded by shell scripts.
 
 Sample ASR models are:
-- ESPnet models (character-based ASR) in our [lab](https://github.com/ouktlab/espnet_asr_models).
-   - ESPnet(CSJ core) -- (core set)
-   - ESPnet(CSJ full) -- (full except D*)
+- ESPnet models (character-based ASR): trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
+   - ESPnet(CSJ core) -- (core set: 220 hrs)
+   - ESPnet(CSJ full) -- (full except D*: 660 hrs)
    - ESPnet(Corpus10)
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
-- ESPnet models (character-based ASR) for streaming in our [lab](https://github.com/ouktlab/espnet_asr_models).
+- ESPnet models (character-based ASR) for streaming: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - ESPnet-st(Corpus10) (0.25 sec. segment in inference)
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - ESPnet models (character-based ASR) 
    - ESPnet([Laborotv](https://huggingface.co/espnet/Shinji_Watanabe_laborotv_asr_train_asr_conformer2_latest33_raw_char_sp_valid.acc.ave))
-- Syllable-ASR & syllable-to-character translation in our [lab](https://github.com/ouktlab/espnet_asr_models).
+- Syllable-ASR & syllable-to-character translation: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - SASR+SCT(Corpus10) with 1-best search = cascaded process
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - Reazon speech
@@ -383,6 +391,9 @@ Because dialogue corpora includes many fillers, their deletion errors affect CER
 
 Note that these results will slightly change after updates of this toolkit.   
 Because the reference text is also modified (such as numbers, words in *rules*), the total number of characters also change.
+
+
+*Rules* may be added and refined in the future. 
 
 #### Raw text
 
