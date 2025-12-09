@@ -373,6 +373,7 @@ Sample ASR models are:
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - ESPnet models (character-based ASR) 
    - ESPnet([Laborotv](https://huggingface.co/espnet/Shinji_Watanabe_laborotv_asr_train_asr_conformer2_latest33_raw_char_sp_valid.acc.ave))
+   - ESPnet([CSJ full,con](https://huggingface.co/ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn)) -- (full except D*: 660hrs. paired data): conformer model trained in our lab
 - Syllable-ASR & syllable-to-character translation: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - SASR+SCT(Corpus10) -- (900 hrs. paired data): 1-best search = cascaded process
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
@@ -408,17 +409,16 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 03:ESPnet(Corpus10)     |     18.54 |      3.76 |      6.78 |     10.07 |     10.56 |     17.01 |      5.24 |      5.63 |
 | 04:SASR+SCT(Corpus10)   |     16.33 |      4.02 |      6.18 |      9.69 |     10.33 |     17.02 |      5.24 |      4.80 |
 | 11:ESPnet-st(Corpus10)  |     22.23 |      4.37 |      8.84 |     17.71 |     13.27 |     19.55 |      7.06 |      7.11 |
-| 20:ESPnet(Laborotv)     |     17.22 |     19.69 |     11.06 |     11.33 |     20.98 |     28.95 |     12.84 |      7.88 |
-| 21:Whisper(large-v3)    |     12.06 |     17.34 |      6.87 |      7.05 |     17.43 |     19.96 |      4.96 |      4.79 |
-| 22:Nue                  |      ---  |     29.05 |      8.76 |      ---  |     25.50 |     31.66 |      7.95 |      5.43 |
-| 23:Reazon               |     12.55 |     18.47 |      6.85 |     28.08 |     15.87 |     20.07 |      3.25 |      4.77 |
-| 24:FunASR               |     14.56 |     13.71 |      7.89 |      6.09 |     13.58 |     20.36 |      3.52 |      5.43 |
-
+| 21:ESPnet(Laborotv)     |     17.22 |     19.69 |     11.06 |     11.33 |     20.98 |     28.95 |     12.84 |      7.88 |
+| 22:Whisper(large-v3)    |     12.06 |     17.34 |      6.87 |      7.05 |     17.43 |     19.96 |      4.96 |      4.79 |
+| 23:Nue                  |       --- |     29.05 |      8.76 |       --- |     25.50 |     31.66 |      7.95 |      5.43 |
+| 24:Reazon               |     12.55 |     18.47 |      6.85 |     28.08 |     15.87 |     20.07 |      3.25 |      4.77 |
+| 25:FunASR               |     14.56 |     13.71 |      7.89 |      6.09 |     13.58 |     20.36 |      3.52 |      5.43 |
+| 31:ESPnet(CSJ full,con) |     24.86 |      3.81 |     12.13 |     15.14 |     18.80 |     28.05 |     17.34 |     12.67 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
 | ---                     | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |
 | # of characters         |    139127 |    115744 |    205375 |     56987 |     49406 |     23099 |      9747 |     26360 |
-
 
 #### with Fugashi
 ```
@@ -432,12 +432,12 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 03:ESPnet(Corpus10)     |     13.29 |      3.25 |      3.53 |      7.26 |      6.88 |     13.97 |      2.76 |      3.07 |
 | 04:SASR+SCT(Corpus10)   |     11.25 |      3.44 |      2.24 |      6.37 |      7.08 |     14.12 |      2.48 |      1.69 |
 | 11:ESPnet-st(Corpus10)  |     16.77 |      3.71 |      4.82 |     12.20 |      9.86 |     16.45 |      4.05 |      4.11 |
-| 20:ESPnet(Laborotv)     |     12.17 |     16.75 |      6.00 |      6.10 |     18.76 |     27.04 |     10.20 |      5.75 |
-| 21:Whisper(large-v3)    |      8.36 |     13.31 |      3.63 |      5.35 |     15.99 |     18.17 |      3.49 |      2.00 |
-| 22:Nue                  |      ---  |     25.50 |      4.43 |      ---  |     24.03 |     29.72 |      6.17 |      2.38 |
-| 23:Reazon               |      7.98 |     14.21 |      3.09 |     10.06 |     13.99 |     17.38 |      1.30 |      1.52 |
-| 24:FunASR               |     11.16 |     10.95 |      5.07 |      4.97 |     11.93 |     18.65 |      2.20 |      2.86 |
-
+| 21:ESPnet(Laborotv)     |     12.17 |     16.75 |      6.00 |      6.10 |     18.76 |     27.04 |     10.20 |      5.75 |
+| 22:Whisper(large-v3)    |      8.36 |     13.31 |      3.63 |      5.35 |     15.99 |     18.17 |      3.49 |      2.00 |
+| 23:Nue                  |       --- |     25.50 |      4.43 |       --- |     24.03 |     29.72 |      6.17 |      2.38 |
+| 24:Reazon               |      7.98 |     14.21 |      3.09 |     10.06 |     13.99 |     17.38 |      1.30 |      1.52 |
+| 25:FunASR               |     11.16 |     10.95 |      5.07 |      4.97 |     11.93 |     18.65 |      2.20 |      2.86 |
+| 31:ESPnet(CSJ full,con) |     19.42 |      3.27 |      7.74 |     11.74 |     15.42 |     25.00 |     14.28 |      9.57 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
 | ---                     | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |
@@ -456,12 +456,12 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 03:ESPnet(Corpus10)     |     13.29 |      3.20 |      3.47 |      7.25 |      5.31 |     13.75 |      2.70 |      2.63 |
 | 04:SASR+SCT(Corpus10)   |     11.25 |      3.36 |      2.17 |      6.33 |      5.39 |     13.90 |      2.51 |      1.32 |
 | 11:ESPnet-st(Corpus10)  |     16.77 |      3.68 |      4.74 |     12.17 |      8.43 |     16.29 |      4.02 |      3.70 |
-| 20:ESPnet(Laborotv)     |     12.17 |     16.43 |      5.92 |      6.07 |     18.34 |     26.96 |      9.98 |      5.33 |
-| 21:Whisper(large-v3)    |      8.36 |     12.75 |      3.52 |      3.97 |     14.74 |     18.02 |      3.18 |      1.43 |
-| 22:Nue                  |      ---  |     25.10 |      4.34 |      ---  |     23.66 |     29.55 |      5.94 |      1.84 |
-| 23:Reazon               |      7.98 |     13.71 |      3.00 |     10.06 |     13.54 |     17.25 |      1.04 |      1.06 |
-| 24:FunASR               |     11.16 |     10.30 |      4.99 |      4.95 |     11.49 |     18.56 |      1.96 |      2.48 |
-
+| 21:ESPnet(Laborotv)     |     12.17 |     16.43 |      5.92 |      6.07 |     18.34 |     26.96 |      9.98 |      5.33 |
+| 22:Whisper(large-v3)    |      8.36 |     12.75 |      3.52 |      3.97 |     14.74 |     18.02 |      3.18 |      1.43 |
+| 23:Nue                  |       --- |     25.10 |      4.34 |       --- |     23.66 |     29.55 |      5.94 |      1.84 |
+| 24:Reazon               |      7.98 |     13.71 |      3.00 |     10.06 |     13.54 |     17.25 |      1.04 |      1.06 |
+| 25:FunASR               |     11.16 |     10.30 |      4.99 |      4.95 |     11.49 |     18.56 |      1.96 |      2.48 |
+| 31:ESPnet(CSJ full,con) |     19.42 |      3.22 |      7.69 |     11.72 |     13.93 |     24.83 |     14.28 |      9.21 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
 | ---                     | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |

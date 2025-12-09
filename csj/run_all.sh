@@ -1,5 +1,5 @@
 #
-device=cuda:0
+device=cuda:1
 corpus=csj
 dataset="eval1 eval2 eval3"
 
@@ -19,6 +19,9 @@ espnet_laborotv=true #false
 whisperv3=true #false
 reazon=true #false
 nue=true #false
+
+#
+espnet_csjfullcon=true #false
 
 #########
 if "${espnet_csjcore}"; then
@@ -74,3 +77,10 @@ fi
 if "${nue}"; then
     bash ../scripts/run_nue.sh ${corpus} ${device} ${dataset}
 fi
+
+##########
+if "${espnet_csjfullcon}"; then
+    modelname=ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn
+    bash ../scripts/run_espnet.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
+fi
+

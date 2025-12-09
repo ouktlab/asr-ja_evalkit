@@ -101,7 +101,10 @@ def print_table_for_sumcer(rawscores, path_to_tag):
     for tag, v in sorted(table.items()):
         print(f'| {tag:24s}', end='|')
         for corpus in sorted(corpus_set):
-            print(f'{table[tag][corpus]:10.2f} ', end='|')
+            if table[tag][corpus] > 0.0:
+                print(f'{table[tag][corpus]:10.2f} ', end='|')
+            else:
+                print(f'{"---":>10s} ', end='|')
         print('')
 
     print('')

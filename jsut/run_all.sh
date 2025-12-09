@@ -1,5 +1,5 @@
 #
-device=cuda:2
+device=cuda:0
 corpus=jsut
 dataset="basic5000 countersuffix26 loanword128 onomatopee300 precedent130 repeat500 travel1000 utparaphrase512 voiceactress100"
 
@@ -20,6 +20,8 @@ whisperv3=true #false
 reazon=true #false
 nue=true #false
 
+#
+espnet_csjfullcon=true #false
 
 #########
 if "${espnet_csjcore}"; then
@@ -74,4 +76,10 @@ fi
 ##########
 if "${nue}"; then
     bash ../scripts/run_nue.sh ${corpus} ${device} ${dataset}
+fi
+
+##########
+if "${espnet_csjfullcon}"; then
+    modelname=ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn
+    bash ../scripts/run_espnet.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
 fi
