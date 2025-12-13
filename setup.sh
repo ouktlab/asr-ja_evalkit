@@ -8,6 +8,7 @@ reazon=true
 nue=true
 funasr=true
 fugashi=true
+kotobaw=true
 
 ###
 python=python3 # python3.10, python3.11
@@ -61,10 +62,19 @@ if "${nue}"; then
 fi
 
 if [ "${funasr}" ]; then
+    echo "-- funasr ------- "
     ${python} -m venv venv/funasr/
     . venv/funasr/bin/activate
     ${python} -m pip install --upgrade pip
     ${python} -m pip install -U funasr torch torchaudio torchcodec
+    deactivate
+fi
+
+if "${kotobaw}"; then
+    echo "-- kotoba-whisper-v2.0 ------- "
+    ${python} -m venv venv/kotobaw
+    . venv/kotobaw/bin/activate
+    ${python} -m pip install -U torch transformers torchaudio
     deactivate
 fi
 

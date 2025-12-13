@@ -1,5 +1,5 @@
 #
-device=cuda:2
+device=cuda:1
 corpus=jvnv
 dataset="anger disgust fear happy sad surprise"
 
@@ -22,6 +22,9 @@ nue=false
 
 #
 espnet_csjfullcon=true #false
+
+#
+kotobaw=true
 
 
 #########
@@ -85,3 +88,7 @@ if "${espnet_csjfullcon}"; then
     bash ../scripts/run_espnet.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
 fi
 
+##########
+if "${kotobaw}"; then
+    bash ../scripts/run_kotobaw.sh ${corpus} ${device} ${dataset}
+fi

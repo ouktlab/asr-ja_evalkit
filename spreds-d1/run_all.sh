@@ -23,6 +23,9 @@ nue=true #false
 #
 espnet_csjfullcon=true #false
 
+#
+kotobaw=true
+
 #########
 if "${espnet_csjcore}"; then
     modelname=ouktlab/espnet_csjcore_asr_train_asr_transformer_lm_rnn
@@ -82,4 +85,9 @@ fi
 if "${espnet_csjfullcon}"; then
     modelname=ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn
     bash ../scripts/run_espnet.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
+fi
+
+##########
+if "${kotobaw}"; then
+    bash ../scripts/run_kotobaw.sh ${corpus} ${device} ${dataset}
 fi

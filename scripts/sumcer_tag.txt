@@ -8,4 +8,5 @@
 23:Nue	nue
 24:Reazon	reazon
 25:FunASR	funasr
+26:Kotoba-whisper(v2.0)	kotoba-whisper/v2.0
 31:ESPnet(CSJ full,con)	espnet/ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn/nbeam-20_ctcw-0.21_lmw-0.30_penalty-0.0

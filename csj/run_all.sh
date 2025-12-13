@@ -1,5 +1,5 @@
 #
-device=cuda:1
+device=cuda:2
 corpus=csj
 dataset="eval1 eval2 eval3"
 
@@ -22,6 +22,9 @@ nue=true #false
 
 #
 espnet_csjfullcon=true #false
+
+#
+kotobaw=true
 
 #########
 if "${espnet_csjcore}"; then
@@ -84,3 +87,7 @@ if "${espnet_csjfullcon}"; then
     bash ../scripts/run_espnet.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
 fi
 
+##########
+if "${kotobaw}"; then
+    bash ../scripts/run_kotobaw.sh ${corpus} ${device} ${dataset}
+fi

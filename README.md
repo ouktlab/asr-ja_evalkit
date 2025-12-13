@@ -414,6 +414,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 23:Nue                  |       --- |     29.05 |      8.76 |       --- |     25.50 |     31.66 |      7.95 |      5.43 |
 | 24:Reazon               |     12.55 |     18.47 |      6.85 |     28.08 |     15.87 |     20.07 |      3.25 |      4.77 |
 | 25:FunASR               |     14.56 |     13.71 |      7.89 |      6.09 |     13.58 |     20.36 |      3.52 |      5.43 |
+| 26:Kotoba-whisper(v2.0) |     12.73 |     19.74 |      8.01 |      6.10 |     17.83 |     25.11 |      5.77 |      5.14 |
 | 31:ESPnet(CSJ full,con) |     24.86 |      3.81 |     12.13 |     15.14 |     18.80 |     28.05 |     17.34 |     12.67 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
@@ -437,6 +438,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 23:Nue                  |       --- |     25.50 |      4.43 |       --- |     24.03 |     29.72 |      6.17 |      2.38 |
 | 24:Reazon               |      7.98 |     14.21 |      3.09 |     10.06 |     13.99 |     17.38 |      1.30 |      1.52 |
 | 25:FunASR               |     11.16 |     10.95 |      5.07 |      4.97 |     11.93 |     18.65 |      2.20 |      2.86 |
+| 26:Kotoba-whisper(v2.0) |      8.98 |     16.07 |      4.76 |      4.15 |     16.49 |     23.56 |      4.16 |      2.41 |
 | 31:ESPnet(CSJ full,con) |     19.42 |      3.27 |      7.74 |     11.74 |     15.42 |     25.00 |     14.28 |      9.57 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
@@ -461,6 +463,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 23:Nue                  |       --- |     25.10 |      4.34 |       --- |     23.66 |     29.55 |      5.94 |      1.84 |
 | 24:Reazon               |      7.98 |     13.71 |      3.00 |     10.06 |     13.54 |     17.25 |      1.04 |      1.06 |
 | 25:FunASR               |     11.16 |     10.30 |      4.99 |      4.95 |     11.49 |     18.56 |      1.96 |      2.48 |
+| 26:Kotoba-whisper(v2.0) |      8.98 |     15.69 |      4.67 |      4.13 |     16.09 |     23.42 |      3.95 |      1.88 |
 | 31:ESPnet(CSJ full,con) |     19.42 |      3.22 |      7.69 |     11.72 |     13.93 |     24.83 |     14.28 |      9.21 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
