@@ -381,6 +381,7 @@ Sample ASR models are:
 - FunASR (SenseVoiceSmall)
 - Whisper (large-v3)
 - Nue (not avairable: 2025/12)
+- Kotoba Whisper v2.0
 
 
 *Rules* were added by checking CER results of ASR models. The order of the check is Whisper, Nue, Reazon, ESPnet, and SASR-SCT.
