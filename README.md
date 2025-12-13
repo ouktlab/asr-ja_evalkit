@@ -333,7 +333,7 @@ Our sample scripts output three types of CERs:
 - CER of normalized text using fugashi (objective processing)
 - CER of normalized text using rules + fugashi (rules may be subjective)
 
-Data set used for evaluation examples are:
+Data set used for evaluation examples are as follows:
 - [SPREDS-D1](https://ast-astrec.nict.go.jp/release/SPREDS-D1/) (NICT ASTREC. License - CC BY 4.0)
    - dialogue speech (human-human)
    - many fillers are included
@@ -360,9 +360,9 @@ Data set used for evaluation examples are:
    - many fillers are included
    - assume eval1, eval2 and eval3 sets built by ESPnet CSJ recipe
 
-Some data sets are automatically downloaded by shell scripts.
+Some data sets are automatically downloaded by shell scripts. 
 
-Sample ASR models are:
+Sample ASR models are as follows:
 - ESPnet models (character-based ASR): trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - ESPnet(CSJ core) -- (core set: 220 hrs. paired data)
    - ESPnet(CSJ full) -- (full except D*: 660 hrs. paired data)
@@ -382,9 +382,13 @@ Sample ASR models are:
 - Whisper (large-v3)
 - Nue (not avairable: 2025/12)
 - Kotoba Whisper v2.0
+- Kushinada
 
 
 *Rules* were added by checking CER results of ASR models. The order of the check is Whisper, Nue, Reazon, ESPnet, and SASR-SCT.
+
+
+Score weights (such as CTC, Decoder, and LM) are not optimized for each data set. 
 
 
 ### Summary of CER 
@@ -416,6 +420,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 24:Reazon               |     12.55 |     18.47 |      6.85 |     28.08 |     15.87 |     20.07 |      3.25 |      4.77 |
 | 25:FunASR               |     14.56 |     13.71 |      7.89 |      6.09 |     13.58 |     20.36 |      3.52 |      5.43 |
 | 26:Kotoba-whisper(v2.0) |     12.73 |     19.74 |      8.01 |      6.10 |     17.83 |     25.11 |      5.77 |      5.14 |
+| 27:Kushinada            |     13.83 |      3.53 |      9.88 |     17.60 |     17.13 |     25.06 |      9.77 |     13.08 |
 | 31:ESPnet(CSJ full,con) |     24.86 |      3.81 |     12.13 |     15.14 |     18.80 |     28.05 |     17.34 |     12.67 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
@@ -440,6 +445,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 24:Reazon               |      7.98 |     14.21 |      3.09 |     10.06 |     13.99 |     17.38 |      1.30 |      1.52 |
 | 25:FunASR               |     11.16 |     10.95 |      5.07 |      4.97 |     11.93 |     18.65 |      2.20 |      2.86 |
 | 26:Kotoba-whisper(v2.0) |      8.98 |     16.07 |      4.76 |      4.15 |     16.49 |     23.56 |      4.16 |      2.41 |
+| 27:Kushinada            |      8.17 |      2.97 |      4.13 |      8.51 |     14.67 |     23.03 |      7.32 |     10.78 |
 | 31:ESPnet(CSJ full,con) |     19.42 |      3.27 |      7.74 |     11.74 |     15.42 |     25.00 |     14.28 |      9.57 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |
@@ -465,6 +471,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 24:Reazon               |      7.98 |     13.71 |      3.00 |     10.06 |     13.54 |     17.25 |      1.04 |      1.06 |
 | 25:FunASR               |     11.16 |     10.30 |      4.99 |      4.95 |     11.49 |     18.56 |      1.96 |      2.48 |
 | 26:Kotoba-whisper(v2.0) |      8.98 |     15.69 |      4.67 |      4.13 |     16.09 |     23.42 |      3.95 |      1.88 |
+| 27:Kushinada            |      8.17 |      2.91 |      4.05 |      8.50 |     13.91 |     22.92 |      7.06 |     10.41 |
 | 31:ESPnet(CSJ full,con) |     19.42 |      3.22 |      7.69 |     11.72 |     13.93 |     24.83 |     14.28 |      9.21 |
 
 |                         |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |

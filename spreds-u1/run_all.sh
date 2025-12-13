@@ -26,6 +26,9 @@ espnet_csjfullcon=true #false
 #
 kotobaw=true
 
+#
+kushinada=true
+
 
 #########
 if "${espnet_csjcore}"; then
@@ -91,4 +94,10 @@ fi
 ##########
 if "${kotobaw}"; then
     bash ../scripts/run_kotobaw.sh ${corpus} ${device}
+fi
+
+##########
+if "${kushinada}"; then
+    modelname=imprt/kushinada-hubert-large-laborotv2-asr
+    bash ../scripts/run_kushinada.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0
 fi

@@ -9,6 +9,7 @@ nue=true
 funasr=true
 fugashi=true
 kotobaw=true
+kushinada=true
 
 ###
 python=python3 # python3.10, python3.11
@@ -78,6 +79,14 @@ if "${kotobaw}"; then
     deactivate
 fi
 
+if "${kushinada}"; then
+    echo "-- kushinada ------- "
+    ${python} -m venv venv/kushinada
+    . venv/kushinada/bin/activate
+    ${python} -m pip install -U espnet==202402 torch==2.2.0 torchaudio==2.2.0 soxr s3prl espnet_model_zoo
+    deactivate
+fi
+
 if "${fugashi}"; then
     echo "-- fugashi ------- "
     ${python} -m venv venv/fugashi
@@ -86,6 +95,4 @@ if "${fugashi}"; then
     ${python} -m unidic download
     deactivate
 fi
-
-
 

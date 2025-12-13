@@ -1,5 +1,5 @@
 #
-device=cuda:1
+device=cuda:2
 corpus=spreds-d1
 dataset="A-0001 A-0002 A-0003 B-0001 B-0002"
 
@@ -25,6 +25,10 @@ espnet_csjfullcon=true #false
 
 #
 kotobaw=true
+
+#
+kushinada=true
+
 
 #########
 if "${espnet_csjcore}"; then
@@ -90,4 +94,10 @@ fi
 ##########
 if "${kotobaw}"; then
     bash ../scripts/run_kotobaw.sh ${corpus} ${device} ${dataset}
+fi
+
+##########
+if "${kushinada}"; then
+    modelname=imprt/kushinada-hubert-large-laborotv2-asr
+    bash ../scripts/run_kushinada.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
 fi

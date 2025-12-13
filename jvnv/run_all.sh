@@ -1,5 +1,5 @@
 #
-device=cuda:1
+device=cuda:0
 corpus=jvnv
 dataset="anger disgust fear happy sad surprise"
 
@@ -25,6 +25,9 @@ espnet_csjfullcon=true #false
 
 #
 kotobaw=true
+
+#
+kushinada=true
 
 
 #########
@@ -91,4 +94,10 @@ fi
 ##########
 if "${kotobaw}"; then
     bash ../scripts/run_kotobaw.sh ${corpus} ${device} ${dataset}
+fi
+
+##########
+if "${kushinada}"; then
+    modelname=imprt/kushinada-hubert-large-laborotv2-asr
+    bash ../scripts/run_kushinada.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
 fi
