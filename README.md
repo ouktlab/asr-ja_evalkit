@@ -4,7 +4,7 @@ The focus of this evaluation kit is orthographic variants (表記ゆれ).
 The performance of ASR models may be measured more accurately by using this toolkit. 
 
 These examples and scripts can be used for academic research and education. 
-Please use carefully because some bugs and errors may be remained. 
+Please use carefully because some bugs and errors may remain. 
 
 ## Features
 - Support text normalization using solid dictionary [`UniDic`](https://clrd.ninjal.ac.jp/unidic/) (with [`Fugashi`](https://github.com/polm/fugashi) interface of [`MeCab`](https://taku910.github.io/mecab/)) for orthographic variants (表記ゆれ)
@@ -41,14 +41,14 @@ Required python libraries are different for each ASR model
 
 ## Influence of Orthographic Variants and Its Reduction
 ### What happens
-The reference text and ASR result text are usually suffered from orthographic variants (`表記ゆれ`, `different spelling`), which may sometimes prevent us from evaluating ASR performance correctly. 
+The reference text and ASR result text are usually suffered from orthographic variants (`表記ゆれ`, `different spelling`), which may *sometimes* prevent us from evaluating ASR performance correctly. 
 - Japanese writing system: Hiragana, Katakana, Kanji, alphabet, symbol, numbers
 - Reference (corpus/test set transcriptions)
-  - strict rules and checks are required when human transcribe speech data set
+  - strict rules and checks are required when human transcribes speech data set
   - such rules are also different among corpora
 - Hypothesis (ASR result)
-  - recent end-to-end models are trained by various corpora/text data set, resulting in inconsistent representations of words
-  - word representations sometimes change according to the context
+  - recent end-to-end models are trained on various corpora/text data set, resulting in inconsistent representations of words
+  - word representations of ASR/LM output sometimes change according to the context
 
 For example, CER of the following recognition results will be worse while the meaning of the sentence is almost the same. 
 ```
@@ -75,7 +75,7 @@ Other examples of `表記ゆれ` are as follows:
 - onomatopoeia: きらきら - キラキラ
 
 ### Solution using solid dictionary and morphological analyzer
-Orthographic variants of major words have been well maintained, and they are summarized as dictionary database. By analyzing Japanese sentence with such dictionary, we can resolve the orthographic variants between reference and hypothesis **to some extent (exceptions always exist)**. 
+Orthographic variants of major words have been well maintained, and they are summarized as dictionary database. By analyzing Japanese sentence with such dictionary, we can resolve the orthographic variants between reference and hypothesis **to some extent (exceptions always exist)** by considering context. 
 
 The following sentences are [`lemmna` and `surface`] of words after applying morphological analyzer (`fugashi` with `UniDic`).
 ```
@@ -302,7 +302,6 @@ python3
 >>> import pysctkja
 >>> print(pysctkja.__version__)
 0.1
->>>
 ```
 
 ### Run package command
@@ -335,14 +334,14 @@ Our sample scripts output three types of CERs:
 
 Data set used for evaluation examples are as follows:
 - [SPREDS-D1](https://ast-astrec.nict.go.jp/release/SPREDS-D1/) (NICT ASTREC. License - CC BY 4.0)
-   - dialogue speech (human-human)
+   - discourse speech (human-human)
    - many fillers are included
    - segmented data are used
 - [SPREDS-D2](https://ast-astrec.nict.go.jp/release/SPREDS-D2/) (NICT ASTREC. License - CC BY 4.0)
-   - dialogue speech (human-human)
+   - discourse speech (human-human)
    - many fillers are included
    - segmented data are used
-   - long audio files (over 30 sec.) are separated in advance
+   - long audio files (over 30 sec.) are segmented in advance
 - [SPREDS-P1](https://ast-astrec.nict.go.jp/release/SPREDS-P1/) (NICT ASTREC. License - CC BY 4.0)
    - presentation speech
    - segmented data are used
@@ -360,23 +359,24 @@ Data set used for evaluation examples are as follows:
    - many fillers are included
    - assume eval1, eval2 and eval3 sets built by ESPnet CSJ recipe
 
-Some data sets are automatically downloaded by shell scripts. 
+Some datasets are automatically downloaded in the shell scripts. 
 
 Sample ASR models are as follows:
-- ESPnet models (character-based ASR): trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
+- ESPnet models (character-based ASR): standard transformer models trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - ESPnet(CSJ core) -- (core set: 220 hrs. paired data)
    - ESPnet(CSJ full) -- (full except D*: 660 hrs. paired data)
    - ESPnet(Corpus10) -- (900 hrs. paired data)
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
+- Syllable-ASR & syllable-to-character translation: standard transformer models trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
+   - SASR+SCT(Corpus10) -- (900 hrs. paired data): 1-best search = cascaded process
+      - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
+      - Same training data with the character-based ASR ESPnet(Corpus10)
 - ESPnet models (character-based ASR) for streaming: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - ESPnet-st(Corpus10) (0.25 sec. segment in inference)
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - ESPnet models (character-based ASR) 
    - ESPnet([Laborotv](https://huggingface.co/espnet/Shinji_Watanabe_laborotv_asr_train_asr_conformer2_latest33_raw_char_sp_valid.acc.ave))
    - ESPnet([CSJ full,con](https://huggingface.co/ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn)) -- (full except D*: 660hrs. paired data): conformer model trained in our lab
-- Syllable-ASR & syllable-to-character translation: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
-   - SASR+SCT(Corpus10) -- (900 hrs. paired data): 1-best search = cascaded process
-      - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
 - Reazon speech
 - FunASR (SenseVoiceSmall)
 - Whisper (large-v3)
