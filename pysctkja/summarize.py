@@ -88,18 +88,18 @@ def print_table_for_sumcer(rawscores, path_to_tag):
 
     #####
     for tag, v in sorted(table.items()):
-        print(f'{"| CER (%)   ":26s}',end='|')
+        print(f'{"| CER (%)   ":30s}',end='|')
         for name in sorted(corpus_set):
             print(f'{name:>10s} ', end='|')
         print('')
-        print(f'{"| --- ":26s}',end='|')
+        print(f'{"| --- ":30s}',end='|')
         for name in sorted(corpus_set):
             print(f'{" ---:":11s}', end='|')
         print('')
         break
 
     for tag, v in sorted(table.items()):
-        print(f'| {tag:24s}', end='|')
+        print(f'| {tag:28s}', end='|')
         for corpus in sorted(corpus_set):
             if table[tag][corpus] > 0.0:
                 print(f'{table[tag][corpus]:10.2f} ', end='|')
@@ -112,16 +112,16 @@ def print_table_for_sumcer(rawscores, path_to_tag):
     
     ###
     for tag, v in sorted(table.items()):
-        print(f'{"|   ":26s}',end='|')
+        print(f'{"|   ":30s}',end='|')
         for name in sorted(corpus_set):
             print(f'{name:>10s} ', end='|')
         print('')
-        print(f'{"| --- ":26s}',end='|')
+        print(f'{"| --- ":30s}',end='|')
         for name in sorted(corpus_set):
             print(f'{" ---:":11s}', end='|')
         print('')
         break
-    print(f'{"| # of characters":26s}',end='|')
+    print(f'{"| # of characters":30s}',end='|')
     for k, v in sorted(chars.items()):
         print(f'{v:>10d} ', end='|')
     print('')

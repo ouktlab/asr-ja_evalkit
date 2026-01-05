@@ -1,5 +1,5 @@
 #
-device=cuda:1
+device=cuda:0
 corpus=spreds-u1
 
 #
@@ -8,6 +8,7 @@ espnet_csjfull=true #false
 espnet_corpus10=true #false
 
 espnet_stream_corpus10=true
+espnet_streamdetrep_corpus10=true
 
 #
 sasrct_corpus10=true #false
@@ -21,7 +22,6 @@ nue=true #false
 
 #
 espnet_csjfullcon=true #false
-
 
 #
 kotobaw=true
@@ -49,6 +49,11 @@ fi
 if "${espnet_stream_corpus10}"; then
     modelname=ouktlab/espnet_asr-ja-mc-stream_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b
     bash ../scripts/run_espnet_stream.sh ${corpus} ${device} ${modelname} 20 0.35 0.195 0.0
+fi
+
+if "${espnet_streamdetrep_corpus10}"; then
+    modelname=ouktlab/espnet_asr-ja-mc-stream_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b
+    bash ../scripts/run_espnet_stream_detrep.sh ${corpus} ${device} ${modelname} 20 0.35 0.195 0.0
 fi
 
 ##########

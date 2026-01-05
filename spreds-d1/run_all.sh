@@ -9,6 +9,7 @@ espnet_csjfull=true #false
 espnet_corpus10=true #false
 
 espnet_stream_corpus10=true
+espnet_streamdetrep_corpus10=true
 
 #
 sasrct_corpus10=true #false
@@ -29,7 +30,6 @@ kotobaw=true
 #
 kushinada=true
 
-
 #########
 if "${espnet_csjcore}"; then
     modelname=ouktlab/espnet_csjcore_asr_train_asr_transformer_lm_rnn
@@ -49,6 +49,11 @@ fi
 if "${espnet_stream_corpus10}"; then
     modelname=ouktlab/espnet_asr-ja-mc-stream_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b
     bash ../scripts/run_espnet_stream.sh ${corpus} ${device} ${modelname} 20 0.35 0.195 0.0 ${dataset}
+fi
+
+if "${espnet_streamdetrep_corpus10}"; then
+    modelname=ouktlab/espnet_asr-ja-mc-stream_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b
+    bash ../scripts/run_espnet_stream_detrep.sh ${corpus} ${device} ${modelname} 20 0.35 0.195 0.0 ${dataset}
 fi
 
 ##########
