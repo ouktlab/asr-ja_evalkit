@@ -35,8 +35,12 @@ def proclist(model, filelist, outfile, basedir):
                 s = s.squeeze()
             
                 print(f'[LOG]: recognizing -- {key}')
-                results = model(s)
-                result_text += results[0][0]
+                try:
+                    results = model(s)
+                    result_text += results[0][0]
+                except:
+                    result_text += "*"
+                    print(f'[LOG]: skipped due to error -- {key}')
                 
             print(f'{key}\t{result_text}', file=fout, flush=True)
 

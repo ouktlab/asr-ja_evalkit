@@ -1,5 +1,5 @@
 #
-device=cuda:0
+device=cuda:2
 corpus=jsut
 dataset="basic5000 countersuffix26 loanword128 onomatopee300 precedent130 repeat500 travel1000 utparaphrase512 voiceactress100"
 
@@ -30,6 +30,8 @@ kotobaw=true
 #
 kushinada=true
 
+#
+funasrnano=true #false
 
 #########
 if "${espnet_csjcore}"; then
@@ -106,4 +108,9 @@ fi
 if "${kushinada}"; then
     modelname=imprt/kushinada-hubert-large-laborotv2-asr 
     bash ../scripts/run_kushinada.sh ${corpus} ${device} ${modelname} 20 0.30 0.21 0.0 ${dataset}
+fi
+
+##########
+if "${funasrnano}"; then
+    bash ../scripts/run_funasrnano.sh ${corpus} ${device} ${dataset}
 fi

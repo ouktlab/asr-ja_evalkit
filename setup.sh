@@ -67,7 +67,7 @@ if [ "${funasr}" ]; then
     ${python} -m venv venv/funasr/
     . venv/funasr/bin/activate
     ${python} -m pip install --upgrade pip
-    ${python} -m pip install -U funasr torch torchaudio torchcodec
+    ${python} -m pip install -U funasr torch torchaudio torchcodec transformers
     deactivate
 fi
 
