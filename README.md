@@ -392,6 +392,12 @@ Sample ASR models are as follows:
 - FunASR (Nano-2512)
 
 
+Note that the amount of training data is usually different among ASR model parameters above.
+If you really want to evaluate the generalization performance of each model in terms of machine learning,
+it is better to train all models from scratch on a same training data set.
+It is obvious that the large amount of training data leads to the better ASR performance. 
+
+
 *Rules* were added by checking CER results of ASR models. The order of the check is Whisper, Nue, Reazon, ESPnet, and SASR-SCT.
 
 
