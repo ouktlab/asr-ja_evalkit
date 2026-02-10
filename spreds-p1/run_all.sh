@@ -1,5 +1,5 @@
 #
-device=cuda:0
+device=cuda:1
 corpus=spreds-p1
 
 #
@@ -12,6 +12,7 @@ espnet_streamdetrep_corpus10=true
 
 #
 sasrct_corpus10=true #false
+sasrct_bb_corpus10=true #false
 
 #
 funasr=true #false
@@ -31,6 +32,7 @@ kushinada=true
 
 #
 funasrnano=true #false
+
 
 #########
 if "${espnet_csjcore}"; then
@@ -64,6 +66,13 @@ if "${sasrct_corpus10}"; then
     tokenizer=ouktlab/character_tokenizer_jis_v2
     sct_model=ouktlab/t5_sct-jis-v2_corpus10-bccwj-wiki40b_mask-1.00
     bash ../scripts/run_sasrct.sh ${corpus} ${device} ${sasr_model} ${tokenizer} ${sct_model} 20 0.35 0.195 0.0 15
+fi
+
+if "${sasrct_bb_corpus10}"; then
+    sasr_model=ouktlab/espnet_asr-ja-kc_am-transformer-robustcorpus10_lm-transformer-corpus10-bccwj-wiki40b
+    tokenizer=ouktlab/character_tokenizer_jis_v2
+    sct_model=ouktlab/t5_sct-jis-v2_corpus10-bccwj-wiki40b_mask-1.00
+    bash ../scripts/run_sasrct_bb.sh ${corpus} ${device} ${sasr_model} ${tokenizer} ${sct_model} 20 0.35 0.195 0.0 15
 fi
 
 ##########

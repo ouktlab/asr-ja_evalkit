@@ -375,6 +375,7 @@ Sample ASR models are as follows:
    - SASR+SCT(Corpus10) -- (900 hrs. seed paired data): 1-best search = cascaded process
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
       - Same training data with the character-based ASR ESPnet(Corpus10)
+   - SASR+SCT:bb(Corpus10) -- N-best block-wise beam search = the joint score of SASR and SCT is considered
 - ESPnet models (character-based ASR) for streaming: trained in our [lab](https://github.com/ouktlab/espnet_asr_models).
    - ESPnet-st(Corpus10) (0.25 sec. segment in inference) with `disable_repetition_detection=True`
       - JSUT is semi-closed set for Corpus10 model (jvs corpus used for training)
@@ -396,6 +397,7 @@ Note that the amount of training data is usually different among ASR model param
 If you really want to evaluate the generalization performance of each model in terms of machine learning,
 it is better to train all models from scratch on a same training data set.
 It is obvious that the large amount of training data leads to the better ASR performance. 
+The efficiency of pattern coverage (sample efficiency) may be important in discussion of training data quality. 
 
 
 *Rules* were added by checking CER results of ASR models. The order of the check is Whisper, Nue, Reazon, ESPnet, and SASR-SCT.
@@ -426,6 +428,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 02:ESPnet(CSJ full)         |     24.19 |      4.05 |     12.29 |     12.76 |     14.50 |     21.95 |     15.05 |      9.21 |     34.83 |
 | 03:ESPnet(Corpus10)         |     18.54 |      3.76 |      6.78 |     10.07 |     10.56 |     17.01 |      5.24 |      5.63 |      7.17 |
 | 04:SASR+SCT(Corpus10)       |     16.33 |      4.02 |      6.18 |      9.69 |     10.33 |     17.02 |      5.24 |      4.80 |      6.20 |
+| 05:SASR+SCT:bb(Corpus10)    |     16.19 |      3.95 |      6.14 |      9.56 |     10.26 |     16.92 |      5.17 |      4.74 |      6.11 |
 | 11:ESPnet-st(Corpus10)      |     22.23 |      4.37 |      8.84 |     17.71 |     13.27 |     19.55 |      7.06 |      7.11 |     10.26 |
 | 12:ESPnet-stdr(Corpus10)    |     20.51 |      3.94 |      7.33 |     11.92 |     10.97 |     17.49 |      6.05 |      5.76 |      8.15 |
 | 21:ESPnet(Laborotv)         |     17.22 |     19.69 |     11.06 |     11.33 |     20.98 |     28.95 |     12.84 |      7.88 |     24.79 |
@@ -454,6 +457,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 02:ESPnet(CSJ full)         |     18.67 |      3.57 |      7.91 |      9.24 |     10.98 |     18.82 |     12.03 |      6.01 |     32.32 |
 | 03:ESPnet(Corpus10)         |     13.29 |      3.25 |      3.53 |      7.26 |      6.88 |     13.97 |      2.76 |      3.07 |      4.57 |
 | 04:SASR+SCT(Corpus10)       |     11.25 |      3.44 |      2.24 |      6.37 |      7.08 |     14.12 |      2.48 |      1.69 |      3.21 |
+| 05:SASR+SCT:bb(Corpus10)    |     11.08 |      3.38 |      2.21 |      6.24 |      7.01 |     14.00 |      2.44 |      1.62 |      3.12 |
 | 11:ESPnet-st(Corpus10)      |     16.77 |      3.71 |      4.82 |     12.20 |      9.86 |     16.45 |      4.05 |      4.11 |      7.36 |
 | 12:ESPnet-stdr(Corpus10)    |     15.36 |      3.42 |      3.86 |      8.34 |      7.86 |     14.44 |      3.38 |      3.06 |      5.49 |
 | 21:ESPnet(Laborotv)         |     12.17 |     16.75 |      6.00 |      6.10 |     18.76 |     27.04 |     10.20 |      5.75 |     23.03 |
@@ -482,6 +486,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 02:ESPnet(CSJ full)         |     18.67 |      3.51 |      7.86 |      9.22 |      9.39 |     18.62 |     12.07 |      5.68 |     32.14 |
 | 03:ESPnet(Corpus10)         |     13.29 |      3.20 |      3.47 |      7.25 |      5.31 |     13.75 |      2.70 |      2.63 |      4.22 |
 | 04:SASR+SCT(Corpus10)       |     11.25 |      3.36 |      2.17 |      6.33 |      5.39 |     13.90 |      2.51 |      1.32 |      2.89 |
+| 05:SASR+SCT:bb(Corpus10)    |     11.08 |      3.29 |      2.13 |      6.21 |      5.32 |     13.79 |      2.47 |      1.25 |      2.79 |
 | 11:ESPnet-st(Corpus10)      |     16.77 |      3.68 |      4.74 |     12.17 |      8.43 |     16.29 |      4.02 |      3.70 |      6.99 |
 | 12:ESPnet-stdr(Corpus10)    |     15.36 |      3.38 |      3.80 |      8.32 |      6.32 |     14.25 |      3.32 |      2.70 |      5.19 |
 | 21:ESPnet(Laborotv)         |     12.17 |     16.43 |      5.92 |      6.07 |     18.34 |     26.96 |      9.98 |      5.33 |     22.71 |
@@ -497,4 +502,3 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 |                             |      cpjd |       csj |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |
 | ---                         | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |
 | # of characters             |    139137 |    115676 |    205483 |     56997 |     49377 |     23119 |      9747 |     26378 |    158268 |
-
