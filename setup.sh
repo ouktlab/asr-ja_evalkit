@@ -12,6 +12,9 @@ kotobaw=true
 kushinada=true
 
 ###
+fleurs=true
+
+###
 python=python3 # python3.10, python3.11
 
 ###
@@ -96,3 +99,10 @@ if "${fugashi}"; then
     deactivate
 fi
 
+if "${fleurs}"; then
+    echo "-- fleurs dataset"
+    ${python} -m venv venv/fleurs
+    . venv/fleurs/bin/activate
+    ${python} -m pip install datasets==3.6.0 soundfile librosa
+    deactivate
+fi
