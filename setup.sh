@@ -10,6 +10,7 @@ funasr=true
 fugashi=true
 kotobaw=true
 kushinada=true
+qwen=true
 
 ###
 fleurs=true
@@ -104,5 +105,14 @@ if "${fleurs}"; then
     ${python} -m venv venv/fleurs
     . venv/fleurs/bin/activate
     ${python} -m pip install datasets==3.6.0 soundfile librosa
+    deactivate
+fi
+
+if "${qwen}"; then
+    echo "-- qwen-asr"
+    ${python} -m venv venv/qwen
+    . venv/qwen/bin/activate
+    ${python} -m pip install numpy typing_extensions
+    ${python} -m pip install qwen-asr
     deactivate
 fi

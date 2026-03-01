@@ -1,5 +1,5 @@
 #
-device=cuda:2
+device=cuda:1
 corpus=jvnv
 dataset="anger disgust fear happy sad surprise"
 
@@ -33,6 +33,9 @@ kushinada=true
 
 #
 funasrnano=true #false
+
+qwen_17b=true
+qwen_06b=true
 
 #########
 if "${espnet_csjcore}"; then
@@ -121,4 +124,15 @@ fi
 ##########
 if "${funasrnano}"; then
     bash ../scripts/run_funasrnano.sh ${corpus} ${device} ${dataset}
+fi
+
+##########
+if "${qwen_17b}"; then
+    modelname="Qwen/Qwen3-ASR-1.7B"
+    bash ../scripts/run_qwenasr.sh ${corpus} ${device} ${modelname} ${dataset}
+fi
+
+if "${qwen_06b}"; then
+    modelname="Qwen/Qwen3-ASR-0.6B"
+    bash ../scripts/run_qwenasr.sh ${corpus} ${device} ${modelname} ${dataset}
 fi

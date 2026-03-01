@@ -395,6 +395,7 @@ Sample ASR models are as follows:
 - Kotoba Whisper v2.0
 - Kushinada
 - FunASR (Nano-2512)
+- QwenASR 0.7B, 1.7B
 
 
 Note that the amount of training data is usually different among ASR model parameters above.
@@ -425,6 +426,7 @@ Because the reference text is also modified (such as numbers, words in *rules*),
 ```
 asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 ```
+
 | CER (%)                     |      cpjd |       csj |    fleurs |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |
 | ---                         | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |
 | 01:ESPnet(CSJ core)         |     32.50 |      6.32 |     29.47 |     21.00 |     26.23 |     17.11 |     28.94 |     18.34 |     19.28 |     43.57 |
@@ -442,8 +444,9 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 26:Kotoba-whisper(v2.0)     |     12.73 |     19.74 |      6.84 |      8.01 |      6.10 |     17.83 |     25.11 |      5.77 |      5.14 |      6.55 |
 | 27:Kushinada                |     13.83 |      3.55 |     12.94 |      9.88 |     17.60 |     17.13 |     25.06 |      9.77 |     13.08 |     39.82 |
 | 28:FunASRnano               |     14.53 |     12.60 |      7.39 |      7.68 |      5.80 |      7.90 |     14.97 |      3.37 |      4.33 |      5.71 |
-| 31:ESPnet(CSJ full,con)     |     24.86 |      3.81 |     21.46 |     12.13 |     15.14 |     18.80 |     28.05 |     17.34 |     12.67 |     43.75 |
-
+| 29:Qwen-0.6B                |     17.88 |     15.84 |      8.72 |     11.44 |      7.89 |     10.24 |     15.77 |      4.78 |      5.93 |      7.86 |
+| 30:Qwen-1.7B                |     15.09 |     13.79 |      5.44 |      8.51 |      6.24 |      9.23 |     13.46 |      3.33 |      4.26 |      5.35 |
+| 41:ESPnet(CSJ full,con)     |     24.86 |      3.81 |     21.46 |     12.13 |     15.14 |     18.80 |     28.05 |     17.34 |     12.67 |     43.75 |
 
 |                             |      cpjd |       csj |    fleurs |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |
 | ---                         | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |
@@ -472,8 +475,9 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 26:Kotoba-whisper(v2.0)     |      8.98 |     16.07 |      5.76 |      4.76 |      4.15 |     16.49 |     23.56 |      4.16 |      2.41 |      3.83 |
 | 27:Kushinada                |      8.17 |      3.02 |      9.46 |      4.13 |      8.51 |     14.67 |     23.03 |      7.32 |     10.78 |     38.39 |
 | 28:FunASRnano               |     10.67 |      8.78 |      5.06 |      4.47 |      4.36 |      5.47 |     12.87 |      1.50 |      2.49 |      3.89 |
-| 31:ESPnet(CSJ full,con)     |     19.42 |      3.27 |     17.36 |      7.74 |     11.74 |     15.42 |     25.00 |     14.28 |      9.57 |     41.53 |
-
+| 29:Qwen-0.6B                |     13.74 |     12.15 |      7.54 |      7.97 |      6.09 |      8.07 |     13.74 |      2.77 |      4.15 |      6.11 |
+| 30:Qwen-1.7B                |     10.99 |     10.12 |      4.39 |      4.97 |      4.64 |      7.10 |     11.49 |      1.23 |      2.57 |      3.73 |
+| 41:ESPnet(CSJ full,con)     |     19.42 |      3.27 |     17.36 |      7.74 |     11.74 |     15.42 |     25.00 |     14.28 |      9.57 |     41.53 |
 
 |                             |      cpjd |       csj |    fleurs |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |
 | ---                         | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |
@@ -502,8 +506,9 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 26:Kotoba-whisper(v2.0)     |      8.98 |     15.69 |      5.60 |      4.67 |      4.13 |     16.09 |     23.42 |      3.95 |      1.88 |      3.32 |
 | 27:Kushinada                |      8.17 |      2.96 |      9.29 |      4.05 |      8.50 |     13.91 |     22.92 |      7.06 |     10.41 |     38.11 |
 | 28:FunASRnano               |     10.67 |      7.75 |      4.77 |      4.40 |      4.32 |      4.37 |     12.73 |      1.51 |      1.99 |      3.47 |
-| 31:ESPnet(CSJ full,con)     |     19.42 |      3.22 |     17.03 |      7.69 |     11.72 |     13.93 |     24.83 |     14.28 |      9.21 |     41.36 |
-
+| 29:Qwen-0.6B                |     13.74 |     11.45 |      7.35 |      7.91 |      6.05 |      7.23 |     13.65 |      2.71 |      3.81 |      5.79 |
+| 30:Qwen-1.7B                |     10.99 |      9.40 |      4.23 |      4.90 |      4.60 |      6.42 |     11.36 |      1.12 |      2.21 |      3.37 |
+| 41:ESPnet(CSJ full,con)     |     19.42 |      3.22 |     17.03 |      7.69 |     11.72 |     13.93 |     24.83 |     14.28 |      9.21 |     41.36 |
 
 |                             |      cpjd |       csj |    fleurs |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |
 | ---                         | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      | ---:      |

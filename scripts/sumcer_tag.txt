@@ -13,4 +13,6 @@
 26:Kotoba-whisper(v2.0)	kotoba-whisper/v2.0
 27:Kushinada	espnet/imprt/kushinada-hubert-large-laborotv2-asr/nbeam-20_ctcw-0.21_lmw-0.30_penalty-0.0
 28:FunASRnano	funasrnano
-31:ESPnet(CSJ full,con)	espnet/ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn/nbeam-20_ctcw-0.21_lmw-0.30_penalty-0.0
+29:Qwen-0.6B	qwen/Qwen/Qwen3-ASR-0.6B
+30:Qwen-1.7B	qwen/Qwen/Qwen3-ASR-1.7B
+41:ESPnet(CSJ full,con)	espnet/ouktlab/espnet_csj_asr_train_asr_conformer_lm_rnn/nbeam-20_ctcw-0.21_lmw-0.30_penalty-0.0
