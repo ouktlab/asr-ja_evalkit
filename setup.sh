@@ -11,6 +11,7 @@ fugashi=true
 kotobaw=true
 kushinada=true
 qwen=true
+granite=true
 
 ###
 fleurs=true
@@ -114,5 +115,13 @@ if "${qwen}"; then
     . venv/qwen/bin/activate
     ${python} -m pip install numpy typing_extensions
     ${python} -m pip install qwen-asr
+    deactivate
+fi
+
+if "${granite}"; then
+    echo "-- granite-asr"
+    ${python} -m venv venv/granite
+    . venv/granite/bin/activate
+    ${python} -m pip install torch transformers torchaudio soundfile accelerate torchcodec
     deactivate
 fi

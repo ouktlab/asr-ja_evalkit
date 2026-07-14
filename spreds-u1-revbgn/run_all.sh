@@ -1,5 +1,5 @@
 #
-device=cuda:2
+device=cuda:1
 corpus=spreds-u1-revbgn
 dataset="snr-10-reverb-near snr-30-reverb-near snr-50-reverb-near snr-10-reverb-far snr-30-reverb-far snr-50-reverb-far"
 
@@ -36,6 +36,9 @@ funasrnano=true #false
 
 qwen_17b=true
 qwen_06b=true
+
+#
+granite412b=true
 
 
 #########
@@ -138,3 +141,8 @@ if "${qwen_06b}"; then
     bash ../scripts/run_qwenasr.sh ${corpus} ${device} ${modelname} ${dataset}
 fi
 
+#########
+if "${granite412b}"; then
+    modelname=granite-speech-4.1-2b
+    bash ../scripts/run_granite.sh ${corpus} ${device} ${modelname} ${dataset}
+fi

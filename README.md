@@ -396,6 +396,7 @@ Sample ASR models are as follows:
 - Kushinada
 - FunASR (Nano-2512)
 - QwenASR 0.7B, 1.7B
+- Granite-4.1-2b
 
 
 Note that the amount of training data is usually different among ASR model parameters above.
@@ -405,7 +406,7 @@ It is obvious that the large amount of training data leads to the better ASR per
 The efficiency of pattern coverage (sample efficiency) may be important in discussion of training data quality. 
 
 
-*Rules* were added by checking CER results of ASR models. The order of the check is Whisper, Nue, Reazon, ESPnet, and SASR-SCT.
+*Rules* were added by checking CER results of ASR models. The order of the check is Whisper, Nue, Reazon, ESPnet, and SASR-SCT. No rules were added for other models. 
 
 
 Score weights (such as CTC, Decoder, and LM) are not optimized for each data set. 
@@ -446,6 +447,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 28:FunASRnano               |     14.53 |     12.60 |      7.39 |      7.68 |      5.80 |      7.90 |     14.97 |      3.37 |      4.33 |      5.71 |
 | 29:Qwen-0.6B                |     17.88 |     15.84 |      8.72 |     11.44 |      7.89 |     10.24 |     15.77 |      4.78 |      5.93 |      7.86 |
 | 30:Qwen-1.7B                |     15.09 |     13.79 |      5.44 |      8.51 |      6.24 |      9.23 |     13.46 |      3.33 |      4.26 |      5.35 |
+| 31:Granite-4.1-2b           |     14.58 |     19.53 |      6.45 |      6.76 |     12.19 |     16.05 |     25.40 |      4.49 |      4.87 |      6.33 |
 | 41:ESPnet(CSJ full,con)     |     24.86 |      3.81 |     21.46 |     12.13 |     15.14 |     18.80 |     28.05 |     17.34 |     12.67 |     43.75 |
 
 |                             |      cpjd |       csj |    fleurs |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |
@@ -477,6 +479,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 28:FunASRnano               |     10.67 |      8.78 |      5.06 |      4.47 |      4.36 |      5.47 |     12.87 |      1.50 |      2.49 |      3.89 |
 | 29:Qwen-0.6B                |     13.74 |     12.15 |      7.54 |      7.97 |      6.09 |      8.07 |     13.74 |      2.77 |      4.15 |      6.11 |
 | 30:Qwen-1.7B                |     10.99 |     10.12 |      4.39 |      4.97 |      4.64 |      7.10 |     11.49 |      1.23 |      2.57 |      3.73 |
+| 31:Granite-4.1-2b           |      9.91 |     15.56 |      4.43 |      3.38 |      8.48 |     14.59 |     23.24 |      2.51 |      2.40 |      3.84 |
 | 41:ESPnet(CSJ full,con)     |     19.42 |      3.27 |     17.36 |      7.74 |     11.74 |     15.42 |     25.00 |     14.28 |      9.57 |     41.53 |
 
 |                             |      cpjd |       csj |    fleurs |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |
@@ -508,6 +511,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 28:FunASRnano               |     10.67 |      7.75 |      4.77 |      4.40 |      4.32 |      4.37 |     12.73 |      1.51 |      1.99 |      3.47 |
 | 29:Qwen-0.6B                |     13.74 |     11.45 |      7.35 |      7.91 |      6.05 |      7.23 |     13.65 |      2.71 |      3.81 |      5.79 |
 | 30:Qwen-1.7B                |     10.99 |      9.40 |      4.23 |      4.90 |      4.60 |      6.42 |     11.36 |      1.12 |      2.21 |      3.37 |
+| 31:Granite-4.1-2b           |      9.91 |     15.27 |      4.25 |      3.32 |      8.14 |     14.25 |     23.15 |      2.31 |      1.95 |      3.38 |
 | 41:ESPnet(CSJ full,con)     |     19.42 |      3.22 |     17.03 |      7.69 |     11.72 |     13.93 |     24.83 |     14.28 |      9.21 |     41.36 |
 
 |                             |      cpjd |       csj |    fleurs |      jsut |      jvnv | spreds-d1 | spreds-d2 | spreds-p1 | spreds-u1 |spreds-u1-revbgn |

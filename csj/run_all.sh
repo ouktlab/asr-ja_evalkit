@@ -37,6 +37,8 @@ funasrnano=true #false
 qwen_17b=true
 qwen_06b=true
 
+#
+granite412b=true
 
 #########
 if "${espnet_csjcore}"; then
@@ -136,4 +138,10 @@ fi
 if "${qwen_06b}"; then
     modelname="Qwen/Qwen3-ASR-0.6B"
     bash ../scripts/run_qwenasr.sh ${corpus} ${device} ${modelname} ${dataset}
+fi
+
+#########
+if "${granite412b}"; then
+    modelname=granite-speech-4.1-2b
+    bash ../scripts/run_granite.sh ${corpus} ${device} ${modelname} ${dataset}
 fi
