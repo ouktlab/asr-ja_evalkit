@@ -69,7 +69,7 @@ def print_table_for_cui(rawscores):
             print('    ---------------------')
 
 
-def print_table_for_sumcer(rawscores, path_to_tag):
+def print_table_for_sumcer(rawscores, path_to_tag, key_index=-1):
     table = defaultdict(lambda: defaultdict(float))
     chars = {}
 
@@ -83,7 +83,7 @@ def print_table_for_sumcer(rawscores, path_to_tag):
             if (tag := path_to_tag.get(key_asrconf)) is None:
                 continue
 
-            table[tag][key_corpus] = sum_scores[-1]/sum_scores[1]*100
+            table[tag][key_corpus] = sum_scores[key_index]/sum_scores[1]*100
             chars[key_corpus] = sum_scores[1]
 
     #####
@@ -153,6 +153,9 @@ def main():
     if args.mode == 'sumcer':
         path_to_tag = read_tabletag(args.tagfile)
         print_table_for_sumcer(rawscores, path_to_tag)
-    
+    if args.mode == 'sumcor':
+        path_to_tag = read_tabletag(args.tagfile)
+        print_table_for_sumcer(rawscores, path_to_tag, key_index=2)
+        
 if __name__ == "__main__":
     main()

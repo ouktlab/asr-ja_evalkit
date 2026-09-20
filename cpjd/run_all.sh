@@ -1,5 +1,5 @@
 #
-device=cuda:1
+device=cuda:2
 corpus=cpjd
 
 #
@@ -38,6 +38,10 @@ qwen_06b=true
 
 #
 granite412b=true
+
+#
+kwsct=true
+
 
 #########
 if "${espnet_csjcore}"; then
@@ -78,6 +82,13 @@ if "${sasrct_bb_corpus10}"; then
     tokenizer=ouktlab/character_tokenizer_jis_v2
     sct_model=ouktlab/t5_sct-jis-v2_corpus10-bccwj-wiki40b_mask-1.00
     bash ../scripts/run_sasrct_bb.sh ${corpus} ${device} ${sasr_model} ${tokenizer} ${sct_model} 20 0.35 0.195 0.0 15 ${dataset}
+fi
+
+if "${kwsct}"; then
+    kw_model=sbintuitions/kana-whisper
+    tokenizer=ouktlab/character_tokenizer_jis_v2
+    sct_model=ouktlab/t5_sct-jis-v2_corpus10-bccwj-wiki40b_mask-1.00
+    bash ../scripts/run_kwsct.sh ${corpus} ${device} ${kw_model} ${tokenizer} ${sct_model}
 fi
 
 ##########

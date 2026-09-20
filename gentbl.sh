@@ -28,4 +28,3 @@ find . -name "score_charnorm-v1_fugashi-v1_rule-lax.txt" \
     | python3 pysctkja/summarize.py sumcer \
 	      --tagfile scripts/sumcer_tag.txt \
 	      > result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
-

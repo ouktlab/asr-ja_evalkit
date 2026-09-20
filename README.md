@@ -397,6 +397,9 @@ Sample ASR models are as follows:
 - FunASR (Nano-2512)
 - QwenASR 0.7B, 1.7B
 - Granite-4.1-2b
+- Kana-Whisper(raw)+SCT
+   - Kana-Whipser: unstable. repetition problem increases insertion errors seriously.
+   - SCT: kana-kanji-conversion model in our lab.
 
 
 Note that the amount of training data is usually different among ASR model parameters above.
@@ -437,6 +440,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_rawtext.txt
 | 05:SASR+SCT:bb(Corpus10)    |     16.19 |      3.95 |      9.01 |      6.14 |      9.56 |     10.26 |     16.92 |      5.17 |      4.74 |      6.11 |
 | 11:ESPnet-st(Corpus10)      |     22.23 |      4.37 |     16.11 |      8.84 |     17.71 |     13.27 |     19.55 |      7.06 |      7.11 |     10.26 |
 | 12:ESPnet-stdr(Corpus10)    |     20.51 |      3.94 |     11.30 |      7.33 |     11.92 |     10.97 |     17.49 |      6.05 |      5.76 |      8.15 |
+| 13:Kana-Whisper(raw)+SCT    |     17.58 |     26.43 |     12.06 |      9.05 |     10.17 |     59.43 |    134.65 |      6.71 |     61.73 |     31.54 |
 | 21:ESPnet(Laborotv)         |     17.22 |     19.69 |     19.72 |     11.06 |     11.33 |     20.98 |     28.95 |     12.84 |      7.88 |     24.79 |
 | 22:Whisper(large-v3)        |     12.06 |     17.34 |      6.58 |      6.87 |      7.05 |     17.43 |     19.96 |      4.96 |      4.79 |      5.91 |
 | 23:Nue                      |       --- |     29.05 |       --- |      8.76 |       --- |     25.50 |     31.66 |      7.95 |      5.43 |       --- |
@@ -469,6 +473,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-none.txt
 | 05:SASR+SCT:bb(Corpus10)    |     11.08 |      3.38 |      5.15 |      2.21 |      6.24 |      7.01 |     14.00 |      2.44 |      1.62 |      3.12 |
 | 11:ESPnet-st(Corpus10)      |     16.77 |      3.71 |     12.25 |      4.82 |     12.20 |      9.86 |     16.45 |      4.05 |      4.11 |      7.36 |
 | 12:ESPnet-stdr(Corpus10)    |     15.36 |      3.42 |      7.62 |      3.86 |      8.34 |      7.86 |     14.44 |      3.38 |      3.06 |      5.49 |
+| 13:Kana-Whisper(raw)+SCT    |     12.49 |     25.83 |      8.19 |      5.09 |      6.84 |     55.84 |    131.59 |      3.83 |     58.73 |     28.68 |
 | 21:ESPnet(Laborotv)         |     12.17 |     16.75 |     16.91 |      6.00 |      6.10 |     18.76 |     27.04 |     10.20 |      5.75 |     23.03 |
 | 22:Whisper(large-v3)        |      8.36 |     13.31 |      5.67 |      3.63 |      5.35 |     15.99 |     18.17 |      3.49 |      2.00 |      3.11 |
 | 23:Nue                      |       --- |     25.50 |       --- |      4.43 |       --- |     24.03 |     29.72 |      6.17 |      2.38 |       --- |
@@ -501,6 +506,7 @@ asr-ja_evalkit$ cat result/summary_score_charnorm-v1_fugashi-v1_rule-lax.txt
 | 05:SASR+SCT:bb(Corpus10)    |     11.08 |      3.29 |      4.84 |      2.13 |      6.21 |      5.32 |     13.79 |      2.47 |      1.25 |      2.79 |
 | 11:ESPnet-st(Corpus10)      |     16.77 |      3.68 |     11.92 |      4.74 |     12.17 |      8.43 |     16.29 |      4.02 |      3.70 |      6.99 |
 | 12:ESPnet-stdr(Corpus10)    |     15.36 |      3.38 |      7.28 |      3.80 |      8.32 |      6.32 |     14.25 |      3.32 |      2.70 |      5.19 |
+| 13:Kana-Whisper(raw)+SCT    |     12.49 |     25.69 |      7.82 |      5.02 |      6.00 |     54.14 |    131.27 |      3.86 |     58.40 |     28.37 |
 | 21:ESPnet(Laborotv)         |     12.17 |     16.43 |     16.75 |      5.92 |      6.07 |     18.34 |     26.96 |      9.98 |      5.33 |     22.71 |
 | 22:Whisper(large-v3)        |      8.36 |     12.75 |      5.03 |      3.52 |      3.97 |     14.74 |     18.02 |      3.18 |      1.43 |      2.58 |
 | 23:Nue                      |       --- |     25.10 |       --- |      4.34 |       --- |     23.66 |     29.55 |      5.94 |      1.84 |       --- |
